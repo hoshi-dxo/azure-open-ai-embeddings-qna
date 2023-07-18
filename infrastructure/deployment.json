@@ -38,7 +38,7 @@
     },
     "HostingPlanSku": {
       "type": "string",
-      "defaultValue": "B3",
+      "defaultValue": "F1",
       "allowedValues": [
         "F1",
         "D1",
@@ -100,14 +100,14 @@
     },
     "OpenAIEngine": {
       "type": "string",
-      "defaultValue": "text-davinci-003",
+      "defaultValue": "gpt-35-turbo",
       "metadata": {
         "description": "OpenAI Engine"
       }
     },
     "OpenAIDeploymentType": {
       "type": "string",
-      "defaultValue": "Text",
+      "defaultValue": "Chat",
       "metadata": {
         "description": "OpenAI Deployment Type. Text for an Instructions based deployment (text-davinci-003). Chat for a Chat based deployment (gpt-35-turbo or gpt-4-32k or gpt-4)."
       }
@@ -150,24 +150,6 @@
       "type": "securestring",
       "metadata": {
         "description": "Form Recognizer Key"
-      }
-    },
-    "TranslateEndpoint": {
-      "type": "string",
-      "metadata": {
-        "description": "Translator Endpoint"
-      }
-    },
-    "TranslateKey": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Translator Key"
-      }
-    },
-    "TranslateRegion": {
-      "type": "string",
-      "metadata": {
-        "description": "Translator Region"
       }
     },
     "newGuid": {
@@ -398,18 +380,6 @@
               "value": "[parameters('RedisPassword')]"
             },
             {
-              "name": "TRANSLATE_ENDPOINT",
-              "value": "[parameters('TranslateEndpoint')]"
-            },
-            {
-              "name": "TRANSLATE_KEY",
-              "value": "[parameters('TranslateKey')]"
-            },
-            {
-              "name": "TRANSLATE_REGION",
-              "value": "[parameters('TranslateRegion')]"
-            },
-            {
               "name": "QUEUE_NAME",
               "value": "[variables('QueueName')]"
             }
@@ -532,9 +502,6 @@
         "BLOB_CONTAINER_NAME": "[variables('BlobContainerName')]",
         "FORM_RECOGNIZER_ENDPOINT": "[parameters('FormRecognizerEndpoint')]",
         "FORM_RECOGNIZER_KEY": "[parameters('FormRecognizerKey')]",
-        "TRANSLATE_ENDPOINT": "[parameters('TranslateEndpoint')]",
-        "TRANSLATE_KEY": "[parameters('TranslateKey')]",
-        "TRANSLATE_REGION": "[parameters('TranslateRegion')]",
         "CONVERT_ADD_EMBEDDINGS_URL": "[concat('https://', parameters('FunctionName') , '.azurewebsites.net/api/BatchStartProcessing?code=', variables('ClientKey'))]"
       }
     },
